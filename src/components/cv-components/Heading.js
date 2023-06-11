@@ -10,7 +10,7 @@ class Heading extends Component {
     return (
       <div className="heading">
         <h3>{this.props.title}</h3>
-        <EditBtn />
+        <EditBtn handleEdit={this.props.handleEdit} />
       </div>
     );
   }
