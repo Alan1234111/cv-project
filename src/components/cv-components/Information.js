@@ -1,25 +1,40 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import deleteIcon from "../img/delete.svg";
+
+const InformationItem = ({
+  information,
+  text,
+  isRemovable,
+  handleDelete,
+  id,
+}) => (
+  <li>
+    <span>{`${information}: ${text ? `${text}` : ""}`}</span>
+    {isRemovable && (
+      <button onClick={() => handleDelete(id)} className="delete-btn">
+        <img className="delete-icon" src={deleteIcon} alt="Delete" />
+      </button>
+    )}
+  </li>
+);
 
 class Information extends Component {
-  constructor(props) {
-    super(props);
-
-    console.log(this.props.listInformations);
-  }
-
   render() {
+    const { listInformations, isRemovable, handleDelete } =
+      this.props;
+
     return (
       <ul>
-        {this.props.listInformations.map((listInformation) => {
-          if (listInformation.text === "") {
-            return;
-          }
-          return (
-            <li>
-              <span>{`${listInformation.information}: ${listInformation.text}`}</span>
-            </li>
-          );
-        })}
+        {listInformations.map((info) => (
+          <InformationItem
+            key={info.id}
+            information={info.information}
+            text={info.text}
+            isRemovable={isRemovable}
+            handleDelete={handleDelete}
+            id={info.id}
+          />
+        ))}
       </ul>
     );
   }
