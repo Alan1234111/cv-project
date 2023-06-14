@@ -1,4 +1,5 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import deleteIcon from "../img/delete.svg";
 
 class JobContainer extends Component {
   constructor(props) {
@@ -14,6 +15,18 @@ class JobContainer extends Component {
           <h4 className="job-position">{this.props.position}</h4>
           <p className="job-description">{this.props.description}</p>
         </div>
+        {this.props.isEditable && (
+          <button
+            onClick={this.props.handleDelete}
+            className="delete-btn-container"
+          >
+            <img
+              className="delete-icon"
+              src={deleteIcon}
+              alt="Delete"
+            />
+          </button>
+        )}
       </div>
     );
   }
