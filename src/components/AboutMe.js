@@ -1,73 +1,79 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Heading from "./cv-components/Heading";
 import Information from "./cv-components/Information";
 import EditBtn from "./cv-components/EditBtn";
 
-class AboutMe extends Component {
-  state = {
-    name: { id: 1, information: "name", text: "Some Name" },
-    contact: [
-      { id: 1, information: "phone", text: "000-000-000" },
+function AboutMe () {
+  const [name, setName] = useState({ id: 1, information: "name", text: "Some Name" });
+  const [contact, setContact] = useState([
+          { id: 1, information: "phone", text: "000-000-000" },
       { id: 2, information: "email", text: "email@example.com" },
       { id: 3, information: "linkedin", text: "linkedinprofile" },
-    ],
-    social: [
-      { id: 1, information: "instagram", text: "insta_gram_" },
+  ]);
+  const [social, setSocial] = useState([
+          { id: 1, information: "instagram", text: "insta_gram_" },
       { id: 2, information: "facebook", text: "facebook" },
-    ],
-    interest: [
-      { id: 1, information: "things", text: "" },
+  ])
+  const [interest, setInterest] = useState([
+          { id: 1, information: "things", text: "" },
       { id: 2, information: "you", text: "" },
       { id: 3, information: "like", text: "" },
       { id: 4, information: "doing", text: "" },
-    ],
-    isEditable: {
-      name: false,
+  ])
+
+  const [isEditable, setIsEditable] = useState ({name: false,
       contact: false,
       social: false,
-      interest: false,
-    },
-    isRemovable: { social: false, interest: false },
+      interest: false})
+
   };
 
-  handleEdit = (name) => {
-    this.setState((prevState) => ({
-      isEditable: {
-        ...prevState.isEditable,
-        [name]: !prevState.isEditable[name],
-      },
-      isRemovable: {
-        ...prevState.isRemovable,
-        [name]: !prevState.isRemovable[name],
-      },
-    }));
+  const [isRemovable, setIsRemovable] = useState({social: false, interest: false})
+
+  function handleEdit  (name)  {
+    setIsEditable(prevState => {...prevState, [name]: !prevState.isEditable[name]})
+
+    setIsRemovable(prevState => {...prevState, [name]: !prevState.isRemovable[name]})
+
+    // this.setState((prevState) => ({
+    //   isEditable: {
+    //     ...prevState.isEditable,
+    //     [name]: !prevState.isEditable[name],
+    //   },
+    //   isRemovable: {
+    //     ...prevState.isRemovable,
+    //     [name]: !prevState.isRemovable[name],
+    //   },
+    // }));
   };
 
-  handleOnChange = (e) => {
+  function handleOnChange  (e)  {
     const { name, value } = e.target;
 
     if (name === "name") {
-      this.setState((prevState) => ({
-        name: {
-          ...prevState.name,
-          text: value,
-        },
-      }));
+      setName(prevState => {
+        return {...prevState.name, text: value}
+      })
+      // this.setState((prevState) => ({
+      //   name: {
+      //     ...prevState.name,
+      //     text: value,
+      //   },
+      // }));
     } else {
-      const updatedContact = this.state.contact.map((contact) => {
+      const updatedContact = contact.map((contact) => {
         if (contact.information === name) {
           return { ...contact, text: value };
         }
         return contact;
       });
 
-      this.setState({
-        contact: updatedContact,
-      });
+      setContact(updatedContact)
+
     }
   };
 
-  handleSubmitOnSocial = (e) => {
+ function handleSubmitOnSocial  (e) {
     e.preventDefault();
     const website = e.target.elements["website"].value;
     const userId = e.target.elements["user-id"].value;
@@ -77,19 +83,19 @@ class AboutMe extends Component {
       information: website,
       text: userId,
     };
-    const updatedSocial = [...this.state.social, newSocial];
 
-    this.setState({
-      social: updatedSocial,
-      isEditable: {
-        ...this.state.isEditable,
-        social: false,
-      },
-      isRemovable: {
-        ...this.state.isRemovable,
-        social: false,
-      },
-    });
+    setSocial((prevState) => [...prevState, newSocial]);
+    setIsEditable(prevVal => ({...prevVal, social:false}));
+    setIsRemovable(prevVal => ({...prevVal, social: false}));
+    //   isEditable: {
+    //     ...this.state.isEditable,
+    //     social: false,
+    //   },
+    //   isRemovable: {
+    //     ...this.state.isRemovable,
+    //     social: false,
+    //   },
+    // });
   };
 
   handleSubmitOnInterest = (e) => {

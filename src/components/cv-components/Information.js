@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import deleteIcon from "../img/delete.svg";
 
 const InformationItem = ({
@@ -18,26 +18,23 @@ const InformationItem = ({
   </li>
 );
 
-class Information extends Component {
-  render() {
-    const { listInformations, isRemovable, handleDelete } =
-      this.props;
+function Information(props) {
+  const { listInformations, isRemovable, handleDelete } = props;
 
-    return (
-      <ul>
-        {listInformations.map((info) => (
-          <InformationItem
-            key={info.id}
-            information={info.information}
-            text={info.text}
-            isRemovable={isRemovable}
-            handleDelete={handleDelete}
-            id={info.id}
-          />
-        ))}
-      </ul>
-    );
-  }
+  return (
+    <ul>
+      {listInformations.map((info) => (
+        <InformationItem
+          key={info.id}
+          information={info.information}
+          text={info.text}
+          isRemovable={isRemovable}
+          handleDelete={handleDelete}
+          id={info.id}
+        />
+      ))}
+    </ul>
+  );
 }
 
 export default Information;
