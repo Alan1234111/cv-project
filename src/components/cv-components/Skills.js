@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Heading from "./Heading";
 import SkillContainer from "./SkillContainer";
 import rating1 from "../img/rating1.png";
@@ -53,13 +53,7 @@ function Skills(props) {
           <input id="skill" />
 
           <label htmlFor="rating">Rating(1-5):</label>
-          <input
-            className="input-number"
-            id="rating"
-            type="number"
-            min="1"
-            max="5"
-          />
+          <input className="input-number" id="rating" type="number" min="1" max="5" />
 
           <button type="submit" className="btn">
             Submit
@@ -68,14 +62,7 @@ function Skills(props) {
       )}
 
       {skills.map((skill) => {
-        return (
-          <SkillContainer
-            skill={skill.skillName}
-            rating={raitings[skill.rating - 1]}
-            handleDelete={() => handleDelete(skill.id)}
-            isEditable={isEditable}
-          />
-        );
+        return <SkillContainer skill={skill.skillName} rating={raitings[skill.rating - 1]} handleDelete={() => handleDelete(skill.id)} isEditable={isEditable} />;
       })}
     </div>
   );

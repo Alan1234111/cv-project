@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import deleteIcon from "../img/delete.svg";
 
 function EducationContainer(props) {
@@ -11,15 +11,8 @@ function EducationContainer(props) {
       </div>
 
       {props.isEditable && (
-        <button
-          onClick={props.handleDelete}
-          className="delete-btn-container"
-        >
-          <img
-            className="delete-icon"
-            src={deleteIcon}
-            alt="Delete"
-          />
+        <button onClick={props.handleDelete} className="delete-btn-container">
+          <img className="delete-icon" src={deleteIcon} alt="Delete" />
         </button>
       )}
     </div>

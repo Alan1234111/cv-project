@@ -11,15 +11,8 @@ function JobContainer(props) {
         <p className="job-description">{props.description}</p>
       </div>
       {props.isEditable && (
-        <button
-          onClick={props.handleDelete}
-          className="delete-btn-container"
-        >
-          <img
-            className="delete-icon"
-            src={deleteIcon}
-            alt="Delete"
-          />
+        <button onClick={props.handleDelete} className="delete-btn-container">
+          <img className="delete-icon" src={deleteIcon} alt="Delete" />
         </button>
       )}
     </div>

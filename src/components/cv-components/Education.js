@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Heading from "./Heading";
 import EducationContainer from "./EducationContainer";
 
@@ -71,16 +71,7 @@ function Education(props) {
         )}
 
         {education.map((education) => {
-          return (
-            <EducationContainer
-              key={education.id}
-              duration={`${education.startingYear} - ${education.endingYear}`}
-              subtitle={education.schoolName}
-              school={education.courseDone}
-              isEditable={isEditable}
-              handleDelete={() => handleDelete(education.id)}
-            />
-          );
+          return <EducationContainer key={education.id} duration={`${education.startingYear} - ${education.endingYear}`} subtitle={education.schoolName} school={education.courseDone} isEditable={isEditable} handleDelete={() => handleDelete(education.id)} />;
         })}
       </div>
     </div>

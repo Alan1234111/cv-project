@@ -1,13 +1,7 @@
 import React from "react";
 import deleteIcon from "../img/delete.svg";
 
-const InformationItem = ({
-  information,
-  text,
-  isRemovable,
-  handleDelete,
-  id,
-}) => (
+const InformationItem = ({information, text, isRemovable, handleDelete, id}) => (
   <li>
     <span>{`${information}: ${text ? `${text}` : ""}`}</span>
     {isRemovable && (
@@ -19,19 +13,12 @@ const InformationItem = ({
 );
 
 function Information(props) {
-  const { listInformations, isRemovable, handleDelete } = props;
+  const {listInformations, isRemovable, handleDelete} = props;
 
   return (
     <ul>
       {listInformations.map((info) => (
-        <InformationItem
-          key={info.id}
-          information={info.information}
-          text={info.text}
-          isRemovable={isRemovable}
-          handleDelete={handleDelete}
-          id={info.id}
-        />
+        <InformationItem key={info.id} information={info.information} text={info.text} isRemovable={isRemovable} handleDelete={handleDelete} id={info.id} />
       ))}
     </ul>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Heading from "./Heading";
 import JobContainer from "./JobContainer";
 
@@ -27,8 +27,7 @@ function Career() {
     const endingYear = e.target.elements["ending-year"].value;
     const companyName = e.target.elements["company"].value;
     const position = e.target.elements["position"].value;
-    const wordDescription =
-      e.target.elements["work-description"].value;
+    const wordDescription = e.target.elements["work-description"].value;
 
     const newCareer = {
       id: Date.now(),
@@ -71,9 +70,7 @@ function Career() {
               <label htmlFor="position">Position:</label>
               <input id="position" />
 
-              <label htmlFor="work-description">
-                Work Done/Handled
-              </label>
+              <label htmlFor="work-description">Work Done/Handled</label>
               <input id="work-description" />
 
               <button className="btn" type="submit">
@@ -83,17 +80,7 @@ function Career() {
           </div>
         )}
         {career.map((job) => {
-          return (
-            <JobContainer
-              key={job.id}
-              duration={`${job.startingYear} - ${job.endingYear}`}
-              company={job.companyName}
-              position={job.position}
-              description={job.workDescription}
-              isEditable={isEditable}
-              handleDelete={() => handleDelete(job.id)}
-            />
-          );
+          return <JobContainer key={job.id} duration={`${job.startingYear} - ${job.endingYear}`} company={job.companyName} position={job.position} description={job.workDescription} isEditable={isEditable} handleDelete={() => handleDelete(job.id)} />;
         })}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import editIcon from "../img/edit.svg";
 
 function EditBtn(props) {
